@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRACO | Bombas & Válvulas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#ffffff;
+  color:#1b1b1b;
+}
+
+/* ===== CONTENEDOR ===== */
+.container{
+  max-width:900px;
+  margin:40px auto 80px;
+  padding:0 20px;
+  text-align:center;
+}
+
+/* ===== LOGO ===== */
+.logo img{
+  max-width:220px;
+  margin-bottom:12px;
+}
+
+.subtitle{
+  color:#00509e;
+  font-weight:600;
+  margin-bottom:30px;
+}
+
+/* ===== SECCIÓN ===== */
+.section{
+  background:#fff;
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 18px 40px rgba(0,0,0,.10);
+  margin-bottom:40px;
+}
+
+/* ===== BOTONES ===== */
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.btn{
+  background:#00509e;
+  color:white;
+  padding:14px 18px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+  text-decoration:none;
+  display:block;
+}
+
+.btn:hover{
+  background:#003366;
+  transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(0,0,0,.2);
+}
+
+/* ===== VISOR PDF ===== */
+#pdfViewer{
+  margin-top:30px;
+  display:none;
+}
+
+iframe{
+  width:100%;
+  height:500px;
+  border-radius:14px;
+  border:1px solid #ddd;
+}
+
+/* ===== TÍTULOS ===== */
+h2{
+  color:#003366;
+  margin-bottom:20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  iframe{height:420px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LOGO -->
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Graco_logo.svg" alt="GRACO">
+  </div>
+  <div class="subtitle">Bombas & Soluciones Industriales</div>
+
+  <!-- ===== BOMBAS ===== -->
+  <div class="section">
+    <h2>Bombas</h2>
+    <div class="buttons">
+      <div class="btn" onclick="openPDF('catalogo.pdf')">Catálogo General</div>
+      <div class="btn" onclick="openPDF('moduflo.pdf')">ModuFlo</div>
+      <div class="btn" onclick="openPDF('g3-grasa.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
+      <div class="btn" onclick="openPDF('g3-lubricacion.pdf')">G3 Bomba de lubricación eléctrica</div>
+      <div class="btn" onclick="openPDF('modu-flo.pdf')">Bombas Modu-Flo</div>
+      <div class="btn" onclick="openPDF('equipos-proceso.pdf')">Equipos de proceso</div>
+      <div class="btn" onclick="openPDF('thrif-t-luber.pdf')">Thrif-T-Luber baja presión</div>
+      <div class="btn" onclick="openPDF('automaticas.pdf')">Bombas automáticas de lubricación</div>
+      <div class="btn" onclick="openPDF('meter-flo.pdf')">Bombas Meter-Flo</div>
+    </div>
+
+    <!-- VISOR -->
+    <div id="pdfViewer">
+      <iframe id="pdfFrame"></iframe>
+    </div>
+  </div>
+
+  <!-- ===== VÁLVULAS ===== -->
+  <div class="section">
+    <h2>Válvulas</h2>
+    <div class="buttons">
+      <a class="btn" href="https://sites.google.com/view/draco-valvulas-serie-s/p%C3%A1gina-principal">Serie S</a>
+      <a class="btn" href="https://sites.google.com/view/draco-parte-3-valvulas-t/p%C3%A1gina-principal">Serie T</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openPDF(url){
+  const viewer = document.getElementById('pdfViewer');
+  const frame = document.getElementById('pdfFrame');
+  frame.src = url;
+  viewer.style.display = 'block';
+  viewer.scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
