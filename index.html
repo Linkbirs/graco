@@ -8,11 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Montserrat',sans-serif;
@@ -20,7 +16,7 @@ body{
   color:#1b1b1b;
 }
 
-/* ===== CONTENEDOR ===== */
+/* CONTENEDOR */
 .container{
   max-width:900px;
   margin:40px auto 80px;
@@ -28,7 +24,7 @@ body{
   text-align:center;
 }
 
-/* ===== LOGO ===== */
+/* LOGO */
 .logo img{
   max-width:220px;
   margin-bottom:12px;
@@ -40,7 +36,7 @@ body{
   margin-bottom:30px;
 }
 
-/* ===== SECCIÓN ===== */
+/* SECCIÓN */
 .section{
   background:#fff;
   border-radius:22px;
@@ -49,7 +45,7 @@ body{
   margin-bottom:40px;
 }
 
-/* ===== BOTONES ===== */
+/* BOTONES */
 .buttons{
   display:flex;
   flex-direction:column;
@@ -64,38 +60,28 @@ body{
   font-weight:600;
   cursor:pointer;
   transition:.3s;
-  text-decoration:none;
-  display:block;
 }
 
 .btn:hover{
   background:#003366;
-  transform:translateY(-3px);
-  box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
-/* ===== VISOR PDF ===== */
+/* VISOR PDF */
 #pdfViewer{
   margin-top:30px;
   display:none;
 }
 
-iframe{
+embed{
   width:100%;
   height:550px;
   border-radius:14px;
   border:1px solid #ddd;
 }
 
-/* ===== TÍTULOS ===== */
-h2{
-  color:#003366;
-  margin-bottom:20px;
-}
-
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media(max-width:480px){
-  iframe{
+  embed{
     height:480px;
   }
 }
@@ -106,39 +92,24 @@ h2{
 
 <div class="container">
 
-  <!-- LOGO -->
   <div class="logo">
     <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg" alt="GRACO">
   </div>
   <div class="subtitle">Bombas & Soluciones Industriales</div>
 
-  <!-- ===== BOMBAS ===== -->
   <div class="section">
     <h2>Bombas</h2>
+
     <div class="buttons">
       <div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
       <div class="btn" onclick="openPDF('MODUFLO-L12000C.pdf')">ModuFlo</div>
-      <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
-      <div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 Bomba de lubricación eléctrica</div>
-      <div class="btn" onclick="openPDF('Bombas Modu-Flo.pdf')">Bombas Modu-Flo</div>
-      <div class="btn" onclick="openPDF('Equipos de proceso catalogos.pdf')">Equipos de proceso</div>
-      <div class="btn" onclick="openPDF('Thrif-T Luber de baja presión.pdf')">Thrif-T-Luber baja presión</div>
-      <div class="btn" onclick="openPDF('Bombas automáticas de lubricación.pdf')">Bombas automáticas de lubricación</div>
-      <div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
+      <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica</div>
+      <div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 lubricación</div>
     </div>
 
-    <!-- VISOR PDF -->
+    <!-- VISOR -->
     <div id="pdfViewer">
-      <iframe id="pdfFrame" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <!-- ===== VÁLVULAS ===== -->
-  <div class="section">
-    <h2>Válvulas</h2>
-    <div class="buttons">
-      <a class="btn" href="https://sites.google.com/view/draco-valvulas-serie-s/p%C3%A1gina-principal">Serie S</a>
-      <a class="btn" href="https://sites.google.com/view/draco-parte-3-valvulas-t/p%C3%A1gina-principal">Serie T</a>
+      <embed id="pdfFrame" type="application/pdf">
     </div>
   </div>
 
@@ -149,15 +120,13 @@ function openPDF(url){
   const viewer = document.getElementById('pdfViewer');
   const frame = document.getElementById('pdfFrame');
 
-  // Visor PDF.js (funciona en móviles)
-  const pdfJS = "https://mozilla.github.io/pdf.js/web/viewer.html?file=";
-
-  frame.src = pdfJS + encodeURIComponent(url);
-  viewer.style.display = "block";
-  viewer.scrollIntoView({ behavior: "smooth" });
+  frame.src = url;
+  viewer.style.display = 'block';
+  viewer.scrollIntoView({ behavior:'smooth' });
 }
 </script>
 
 </body>
 </html>
+
 
