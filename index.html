@@ -12,10 +12,11 @@
 
 body{
   font-family:'Montserrat',sans-serif;
-  background:#fff;
+  background:#ffffff;
   color:#1b1b1b;
 }
 
+/* ===== CONTENEDOR ===== */
 .container{
   max-width:900px;
   margin:40px auto 80px;
@@ -23,10 +24,19 @@ body{
   text-align:center;
 }
 
-.logo img{max-width:220px;margin-bottom:12px}
+/* ===== LOGO ===== */
+.logo img{
+  max-width:220px;
+  margin-bottom:12px;
+}
 
-.subtitle{color:#00509e;font-weight:600;margin-bottom:30px}
+.subtitle{
+  color:#00509e;
+  font-weight:600;
+  margin-bottom:30px;
+}
 
+/* ===== SECCIÓN ===== */
 .section{
   background:#fff;
   border-radius:22px;
@@ -35,7 +45,12 @@ body{
   margin-bottom:40px;
 }
 
-.buttons{display:flex;flex-direction:column;gap:14px}
+/* ===== BOTONES ===== */
+.buttons{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
 
 .btn{
   background:#00509e;
@@ -45,23 +60,28 @@ body{
   font-weight:600;
   cursor:pointer;
   transition:.3s;
+  text-decoration:none;
+  display:block;
 }
 
 .btn:hover{
   background:#003366;
   transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
-/* ===== VISOR ===== */
+/* ===== VISOR PDF ===== */
 #pdfViewer{
-  margin-top:30px;
+  margin:30px auto 0;
   display:none;
   position:relative;
+  max-width:720px;
 }
 
+/* tamaño tipo hoja */
 #pdfFrame{
   width:100%;
-  height:70vh;
+  height:480px;
   border-radius:16px;
   border:1px solid #ddd;
 }
@@ -70,7 +90,7 @@ body{
 #loader{
   position:absolute;
   inset:0;
-  background:#ffffff;
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -79,6 +99,7 @@ body{
   border-radius:16px;
 }
 
+/* ===== BOTÓN EXTRA ===== */
 #openOutside{
   margin-top:15px;
   display:none;
@@ -93,8 +114,17 @@ body{
   font-weight:600;
 }
 
+/* ===== TÍTULOS ===== */
+h2{
+  color:#003366;
+  margin-bottom:20px;
+}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:480px){
-  #pdfFrame{height:75vh}
+  #pdfFrame{
+    height:420px;
+  }
 }
 </style>
 </head>
@@ -103,20 +133,29 @@ body{
 
 <div class="container">
 
+  <!-- LOGO -->
   <div class="logo">
-    <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg">
+    <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg" alt="GRACO">
   </div>
   <div class="subtitle">Bombas & Soluciones Industriales</div>
 
+  <!-- ===== BOMBAS ===== -->
   <div class="section">
     <h2>Bombas</h2>
 
     <div class="buttons">
       <div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
       <div class="btn" onclick="openPDF('MODUFLO-L12000C.pdf')">ModuFlo</div>
-      <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica</div>
+      <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
+      <div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 Bomba de lubricación eléctrica</div>
+      <div class="btn" onclick="openPDF('Bombas Modu-Flo.pdf')">Bombas Modu-Flo</div>
+      <div class="btn" onclick="openPDF('Equipos de proceso catalogos.pdf')">Equipos de proceso</div>
+      <div class="btn" onclick="openPDF('Thrif-T Luber de baja presión.pdf')">Thrif-T-Luber baja presión</div>
+      <div class="btn" onclick="openPDF('Bombas automáticas de lubricación.pdf')">Bombas automáticas de lubricación</div>
+      <div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
     </div>
 
+    <!-- VISOR -->
     <div id="pdfViewer">
       <div id="loader">Cargando PDF…</div>
       <iframe id="pdfFrame"></iframe>
@@ -124,6 +163,15 @@ body{
       <div id="openOutside">
         <a id="openLink">Abrir PDF en pantalla completa</a>
       </div>
+    </div>
+  </div>
+
+  <!-- ===== VÁLVULAS ===== -->
+  <div class="section">
+    <h2>Válvulas</h2>
+    <div class="buttons">
+      <a class="btn" href="https://sites.google.com/view/draco-valvulas-serie-s/p%C3%A1gina-principal">Serie S</a>
+      <a class="btn" href="https://sites.google.com/view/draco-parte-3-valvulas-t/p%C3%A1gina-principal">Serie T</a>
     </div>
   </div>
 
@@ -144,10 +192,9 @@ function openPDF(file){
   const encoded = encodeURIComponent(file);
   const url = location.origin + '/' + encoded;
 
-  // Visor universal (NO parpadea)
+  // visor estable para móvil y PC
   frame.src = `https://docs.google.com/gview?embedded=true&url=${url}`;
 
-  // Quitar loader cuando cargue
   frame.onload = () => {
     loader.style.display = 'none';
     openOutside.style.display = 'block';
