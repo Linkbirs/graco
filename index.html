@@ -16,7 +16,6 @@ body{
   color:#1b1b1b;
 }
 
-/* CONTENEDOR */
 .container{
   max-width:900px;
   margin:40px auto 80px;
@@ -24,7 +23,6 @@ body{
   text-align:center;
 }
 
-/* LOGO */
 .logo img{
   max-width:220px;
   margin-bottom:12px;
@@ -36,7 +34,6 @@ body{
   margin-bottom:30px;
 }
 
-/* SECCIÓN */
 .section{
   background:#fff;
   border-radius:22px;
@@ -45,7 +42,6 @@ body{
   margin-bottom:40px;
 }
 
-/* BOTONES */
 .buttons{
   display:flex;
   flex-direction:column;
@@ -64,26 +60,41 @@ body{
 
 .btn:hover{
   background:#003366;
+  transform:translateY(-3px);
+  box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
-/* VISOR PDF */
+/* ===== VISOR ===== */
 #pdfViewer{
   margin-top:30px;
   display:none;
 }
 
-embed{
+#pdfFrame{
   width:100%;
-  height:550px;
-  border-radius:14px;
+  height:70vh;
+  border-radius:16px;
   border:1px solid #ddd;
 }
 
-/* RESPONSIVE */
+/* ===== BOTON ALTERNATIVO ===== */
+#fallback{
+  display:none;
+  margin-top:15px;
+}
+
+#fallback a{
+  display:inline-block;
+  background:#003366;
+  color:#fff;
+  padding:12px 20px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+
 @media(max-width:480px){
-  embed{
-    height:480px;
-  }
+  #pdfFrame{height:75vh}
 }
 </style>
 </head>
@@ -93,7 +104,7 @@ embed{
 <div class="container">
 
   <div class="logo">
-    <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg" alt="GRACO">
+    <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg">
   </div>
   <div class="subtitle">Bombas & Soluciones Industriales</div>
 
@@ -104,25 +115,49 @@ embed{
       <div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
       <div class="btn" onclick="openPDF('MODUFLO-L12000C.pdf')">ModuFlo</div>
       <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica</div>
-      <div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 lubricación</div>
     </div>
 
-    <!-- VISOR -->
     <div id="pdfViewer">
-      <embed id="pdfFrame" type="application/pdf">
+      <iframe id="pdfFrame"></iframe>
+
+      <div id="fallback">
+        <a id="openPdfBtn" target="_self">Abrir PDF en esta página</a>
+      </div>
     </div>
   </div>
 
 </div>
 
 <script>
-function openPDF(url){
+function openPDF(file){
   const viewer = document.getElementById('pdfViewer');
   const frame = document.getElementById('pdfFrame');
+  const fallback = document.getElementById('fallback');
+  const openBtn = document.getElementById('openPdfBtn');
 
-  frame.src = url;
   viewer.style.display = 'block';
-  viewer.scrollIntoView({ behavior:'smooth' });
+  fallback.style.display = 'none';
+
+  const encoded = encodeURIComponent(file);
+  const baseURL = location.origin + '/' + encoded;
+
+  // Intento 1: visor embebido (funciona en muchos móviles)
+  frame.src = `https://docs.google.com/gview?embedded=true&url=${baseURL}`;
+
+  // Si falla (pantalla negra o bloqueado)
+  setTimeout(() => {
+    try{
+      if(frame.contentDocument === null){
+        throw 'fallback';
+      }
+    }catch(e){
+      frame.src = '';
+      fallback.style.display = 'block';
+      openBtn.href = baseURL;
+    }
+  }, 1200);
+
+  viewer.scrollIntoView({behavior:'smooth'});
 }
 </script>
 
