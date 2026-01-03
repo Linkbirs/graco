@@ -12,7 +12,7 @@
 
 body{
   font-family:'Montserrat',sans-serif;
-  background:#ffffff;
+  background:#fff;
   color:#1b1b1b;
 }
 
@@ -23,16 +23,9 @@ body{
   text-align:center;
 }
 
-.logo img{
-  max-width:220px;
-  margin-bottom:12px;
-}
+.logo img{max-width:220px;margin-bottom:12px}
 
-.subtitle{
-  color:#00509e;
-  font-weight:600;
-  margin-bottom:30px;
-}
+.subtitle{color:#00509e;font-weight:600;margin-bottom:30px}
 
 .section{
   background:#fff;
@@ -42,11 +35,7 @@ body{
   margin-bottom:40px;
 }
 
-.buttons{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
+.buttons{display:flex;flex-direction:column;gap:14px}
 
 .btn{
   background:#00509e;
@@ -61,13 +50,13 @@ body{
 .btn:hover{
   background:#003366;
   transform:translateY(-3px);
-  box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
 /* ===== VISOR ===== */
 #pdfViewer{
   margin-top:30px;
   display:none;
+  position:relative;
 }
 
 #pdfFrame{
@@ -77,14 +66,25 @@ body{
   border:1px solid #ddd;
 }
 
-/* ===== BOTON ALTERNATIVO ===== */
-#fallback{
-  display:none;
-  margin-top:15px;
+/* ===== LOADER ===== */
+#loader{
+  position:absolute;
+  inset:0;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#00509e;
+  border-radius:16px;
 }
 
-#fallback a{
-  display:inline-block;
+#openOutside{
+  margin-top:15px;
+  display:none;
+}
+
+#openOutside a{
   background:#003366;
   color:#fff;
   padding:12px 20px;
@@ -118,10 +118,11 @@ body{
     </div>
 
     <div id="pdfViewer">
+      <div id="loader">Cargando PDF…</div>
       <iframe id="pdfFrame"></iframe>
 
-      <div id="fallback">
-        <a id="openPdfBtn" target="_self">Abrir PDF en esta página</a>
+      <div id="openOutside">
+        <a id="openLink">Abrir PDF en pantalla completa</a>
       </div>
     </div>
   </div>
@@ -132,36 +133,33 @@ body{
 function openPDF(file){
   const viewer = document.getElementById('pdfViewer');
   const frame = document.getElementById('pdfFrame');
-  const fallback = document.getElementById('fallback');
-  const openBtn = document.getElementById('openPdfBtn');
+  const loader = document.getElementById('loader');
+  const openOutside = document.getElementById('openOutside');
+  const openLink = document.getElementById('openLink');
 
   viewer.style.display = 'block';
-  fallback.style.display = 'none';
+  loader.style.display = 'flex';
+  openOutside.style.display = 'none';
 
   const encoded = encodeURIComponent(file);
-  const baseURL = location.origin + '/' + encoded;
+  const url = location.origin + '/' + encoded;
 
-  // Intento 1: visor embebido (funciona en muchos móviles)
-  frame.src = `https://docs.google.com/gview?embedded=true&url=${baseURL}`;
+  // Visor universal (NO parpadea)
+  frame.src = `https://docs.google.com/gview?embedded=true&url=${url}`;
 
-  // Si falla (pantalla negra o bloqueado)
-  setTimeout(() => {
-    try{
-      if(frame.contentDocument === null){
-        throw 'fallback';
-      }
-    }catch(e){
-      frame.src = '';
-      fallback.style.display = 'block';
-      openBtn.href = baseURL;
-    }
-  }, 1200);
+  // Quitar loader cuando cargue
+  frame.onload = () => {
+    loader.style.display = 'none';
+    openOutside.style.display = 'block';
+  };
 
+  openLink.href = url;
   viewer.scrollIntoView({behavior:'smooth'});
 }
 </script>
 
 </body>
 </html>
+
 
 
