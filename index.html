@@ -8,7 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
 body{
   font-family:'Montserrat',sans-serif;
@@ -78,7 +82,7 @@ body{
 
 iframe{
   width:100%;
-  height:500px;
+  height:550px;
   border-radius:14px;
   border:1px solid #ddd;
 }
@@ -91,7 +95,9 @@ h2{
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:480px){
-  iframe{height:420px}
+  iframe{
+    height:480px;
+  }
 }
 </style>
 </head>
@@ -121,9 +127,9 @@ h2{
       <div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
     </div>
 
-    <!-- VISOR -->
+    <!-- VISOR PDF -->
     <div id="pdfViewer">
-      <iframe id="pdfFrame"></iframe>
+      <iframe id="pdfFrame" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -142,11 +148,16 @@ h2{
 function openPDF(url){
   const viewer = document.getElementById('pdfViewer');
   const frame = document.getElementById('pdfFrame');
-  frame.src = url;
-  viewer.style.display = 'block';
-  viewer.scrollIntoView({behavior:'smooth'});
+
+  // Visor PDF.js (funciona en móviles)
+  const pdfJS = "https://mozilla.github.io/pdf.js/web/viewer.html?file=";
+
+  frame.src = pdfJS + encodeURIComponent(url);
+  viewer.style.display = "block";
+  viewer.scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
 </body>
 </html>
+
