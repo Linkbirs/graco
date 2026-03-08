@@ -11,111 +11,110 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:'Montserrat',sans-serif;
-  background:#ffffff;
-  color:#1b1b1b;
+font-family:'Montserrat',sans-serif;
+background:#ffffff;
+color:#1b1b1b;
 }
 
 .container{
-  max-width:900px;
-  margin:40px auto 80px;
-  padding:0 20px;
-  text-align:center;
+max-width:900px;
+margin:40px auto 80px;
+padding:0 20px;
+text-align:center;
 }
 
 .logo img{
-  max-width:220px;
-  margin-bottom:12px;
+max-width:220px;
+margin-bottom:12px;
 }
 
 .subtitle{
-  color:#00509e;
-  font-weight:600;
-  margin-bottom:30px;
+color:#00509e;
+font-weight:600;
+margin-bottom:30px;
 }
 
 .section{
-  background:#fff;
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 18px 40px rgba(0,0,0,.10);
-  margin-bottom:40px;
+background:#fff;
+border-radius:22px;
+padding:28px;
+box-shadow:0 18px 40px rgba(0,0,0,.10);
+margin-bottom:40px;
 }
 
 .buttons{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
+display:flex;
+flex-direction:column;
+gap:14px;
 }
 
 .btn{
-  background:#00509e;
-  color:white;
-  padding:14px 18px;
-  border-radius:12px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
-  text-decoration:none;
-  display:block;
+background:#00509e;
+color:white;
+padding:14px 18px;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+text-decoration:none;
+display:block;
 }
 
 .btn:hover{
-  background:#003366;
-  transform:translateY(-3px);
-  box-shadow:0 12px 25px rgba(0,0,0,.2);
+background:#003366;
+transform:translateY(-3px);
+box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
-/* VISOR */
 #pdfViewer{
-  margin:30px auto 0;
-  display:none;
-  position:relative;
-  max-width:720px;
+margin:30px auto 0;
+display:none;
+position:relative;
+max-width:720px;
 }
 
 #pdfFrame{
-  width:100%;
-  height:480px;
-  border-radius:16px;
-  border:1px solid #ddd;
+width:100%;
+height:480px;
+border-radius:16px;
+border:1px solid #ddd;
 }
 
 #loader{
-  position:absolute;
-  inset:0;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:600;
-  color:#00509e;
-  border-radius:16px;
+position:absolute;
+inset:0;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:600;
+color:#00509e;
+border-radius:16px;
 }
 
 #openOutside{
-  margin-top:15px;
-  display:none;
+margin-top:15px;
+display:none;
 }
 
 #openOutside a{
-  background:#003366;
-  color:#fff;
-  padding:12px 20px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
+background:#003366;
+color:#fff;
+padding:12px 20px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
 }
 
 h2{
-  color:#003366;
-  margin-bottom:20px;
+color:#003366;
+margin-bottom:20px;
 }
 
 @media(max-width:480px){
-  #pdfFrame{
-    height:420px;
-  }
+#pdfFrame{
+height:420px;
+}
 }
 </style>
 </head>
@@ -147,6 +146,7 @@ h2{
 </div>
 
 <div id="pdfViewer">
+
 <div id="loader">Cargando PDF…</div>
 
 <iframe id="pdfFrame"></iframe>
@@ -198,6 +198,7 @@ Ver Guía del Comprador
 </div>
 
 <script>
+
 function openPDF(file){
 
 const viewer=document.getElementById('pdfViewer');
@@ -216,8 +217,8 @@ if(!file.startsWith("http")){
 url=location.origin+"/"+encodeURIComponent(file);
 }
 
-/* visor PDF.js */
-frame.src="https://mozilla.github.io/pdf.js/web/viewer.html?file="+encodeURIComponent(url);
+/* carga directa del pdf */
+frame.src=url;
 
 frame.onload=function(){
 loader.style.display='none';
@@ -228,11 +229,11 @@ openLink.href=url;
 
 viewer.scrollIntoView({behavior:'smooth'});
 }
+
 </script>
 
 </body>
 </html>
-</body>
 </html>
 
 
