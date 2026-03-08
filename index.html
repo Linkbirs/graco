@@ -16,7 +16,6 @@ body{
   color:#1b1b1b;
 }
 
-/* ===== CONTENEDOR ===== */
 .container{
   max-width:900px;
   margin:40px auto 80px;
@@ -24,7 +23,6 @@ body{
   text-align:center;
 }
 
-/* ===== LOGO ===== */
 .logo img{
   max-width:220px;
   margin-bottom:12px;
@@ -36,7 +34,6 @@ body{
   margin-bottom:30px;
 }
 
-/* ===== SECCIÓN ===== */
 .section{
   background:#fff;
   border-radius:22px;
@@ -45,7 +42,6 @@ body{
   margin-bottom:40px;
 }
 
-/* ===== BOTONES ===== */
 .buttons{
   display:flex;
   flex-direction:column;
@@ -70,7 +66,7 @@ body{
   box-shadow:0 12px 25px rgba(0,0,0,.2);
 }
 
-/* ===== VISOR PDF ===== */
+/* VISOR */
 #pdfViewer{
   margin:30px auto 0;
   display:none;
@@ -78,7 +74,6 @@ body{
   max-width:720px;
 }
 
-/* tamaño tipo hoja */
 #pdfFrame{
   width:100%;
   height:480px;
@@ -86,7 +81,6 @@ body{
   border:1px solid #ddd;
 }
 
-/* ===== LOADER ===== */
 #loader{
   position:absolute;
   inset:0;
@@ -99,7 +93,6 @@ body{
   border-radius:16px;
 }
 
-/* ===== BOTÓN EXTRA ===== */
 #openOutside{
   margin-top:15px;
   display:none;
@@ -114,13 +107,11 @@ body{
   font-weight:600;
 }
 
-/* ===== TÍTULOS ===== */
 h2{
   color:#003366;
   margin-bottom:20px;
 }
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:480px){
   #pdfFrame{
     height:420px;
@@ -133,106 +124,114 @@ h2{
 
 <div class="container">
 
-  <!-- LOGO -->
-  <div class="logo">
-    <img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg" alt="GRACO">
-  </div>
-  <div class="subtitle">Bombas & Soluciones Industriales</div>
+<div class="logo">
+<img src="https://i.ibb.co/m45fpBn/Whats-App-Image-2024-12-23-at-4-15-01-AM.jpg">
+</div>
 
-  <!-- ===== BOMBAS ===== -->
-  <div class="section">
-    <h2>Bombas</h2>
+<div class="subtitle">Bombas & Soluciones Industriales</div>
 
-    <div class="buttons">
-      <div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
-      <div class="btn" onclick="openPDF('MODUFLO-L12000C.pdf')">ModuFlo</div>
-      <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
-      <div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 Bomba de lubricación eléctrica</div>
-      <div class="btn" onclick="openPDF('Bombas Modu-Flo.pdf')">Bombas Modu-Flo</div>
-      <div class="btn" onclick="openPDF('Equipos de proceso catalogos.pdf')">Equipos de proceso</div>
-      <div class="btn" onclick="openPDF('Thrif-T Luber de baja presión.pdf')">Thrif-T-Luber baja presión</div>
-      <div class="btn" onclick="openPDF('Bombas automáticas de lubricación.pdf')">Bombas automáticas de lubricación</div>
-      <div class="btn" onclick="openPDF('Graco manual bombas electricas de diafragma.pdf')">Bombas electricas de diafragma</div>
-      <div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
-    </div>
+<div class="section">
+<h2>Bombas</h2>
 
-    <!-- VISOR -->
-    <div id="pdfViewer">
-      <div id="loader">Cargando PDF…</div>
-      <iframe id="pdfFrame"></iframe>
+<div class="buttons">
+<div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
+<div class="btn" onclick="openPDF('MODUFLO-L12000C.pdf')">ModuFlo</div>
+<div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
+<div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 Bomba de lubricación eléctrica</div>
+<div class="btn" onclick="openPDF('Bombas Modu-Flo.pdf')">Bombas Modu-Flo</div>
+<div class="btn" onclick="openPDF('Equipos de proceso catalogos.pdf')">Equipos de proceso</div>
+<div class="btn" onclick="openPDF('Thrif-T Luber de baja presión.pdf')">Thrif-T-Luber baja presión</div>
+<div class="btn" onclick="openPDF('Bombas automáticas de lubricación.pdf')">Bombas automáticas de lubricación</div>
+<div class="btn" onclick="openPDF('Graco manual bombas electricas de diafragma.pdf')">Bombas electricas de diafragma</div>
+<div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
+</div>
 
-      <div id="openOutside">
-        <a id="openLink">Abrir PDF</a>
-      </div>
-    </div>
-  </div>
+<div id="pdfViewer">
+<div id="loader">Cargando PDF…</div>
 
-  <!-- ===== VÁLVULAS ===== -->
-  <div class="section">
-    <h2>Válvulas</h2>
-    <div class="buttons">
-      <div class="btn" onclick="openPDF('340800ES-B.pdf')">Progresivas</div>
-      <div class="btn" onclick="openPDF('MSP-Y-SENSOR.pdf')">MSP</div>
-      <a class="btn" href="https://sites.google.com/view/draco-valvulas-serie-s/p%C3%A1gina-principal">Serie S</a>
-      <a class="btn" href="https://sites.google.com/view/draco-parte-3-valvulas-t/p%C3%A1gina-principal">Serie T</a>
-    </div>
-  </div>
+<iframe id="pdfFrame"></iframe>
 
-  <div class="section">
-    <h2>Inyectores y Controladores</h2>
-    <div class="buttons">
-      <div class="btn" onclick="openPDF('334788ES-F.pdf')">Inyectores</div>
-      <div class="btn" onclick="openPDF('313855EN.pdf')">Controladores GLC</div>
-    </div>
-  </div>
+<div id="openOutside">
+<a id="openLink" target="_blank">Abrir PDF completo</a>
+</div>
 
-  <!-- ===== NUEVA SECCIÓN ===== -->
-  <div class="section">
-    <h2>Equipo De Servicio Para Vehículos<br>GUÍA DEL COMPRADOR</h2>
+</div>
+</div>
 
-    <div class="buttons">
-      <a class="btn" href="https://drive.google.com/file/d/1IcY2Xt5dMFxavyGFnbo9oo3mnEj4sXr7/view?usp=sharing">Ver Guía del Comprador</a>
-      </div>
-    </div>
-  </div>
+<div class="section">
+<h2>Válvulas</h2>
+
+<div class="buttons">
+<div class="btn" onclick="openPDF('340800ES-B.pdf')">Progresivas</div>
+<div class="btn" onclick="openPDF('MSP-Y-SENSOR.pdf')">MSP</div>
+<a class="btn" href="https://sites.google.com/view/draco-valvulas-serie-s/p%C3%A1gina-principal">Serie S</a>
+<a class="btn" href="https://sites.google.com/view/draco-parte-3-valvulas-t/p%C3%A1gina-principal">Serie T</a>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Inyectores y Controladores</h2>
+
+<div class="buttons">
+<div class="btn" onclick="openPDF('334788ES-F.pdf')">Inyectores</div>
+<div class="btn" onclick="openPDF('313855EN.pdf')">Controladores GLC</div>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Equipo De Servicio Para Vehículos<br>GUÍA DEL COMPRADOR</h2>
+
+<div class="buttons">
+
+<div class="btn"
+onclick="openPDF('https://drive.google.com/uc?export=download&id=1IcY2Xt5dMFxavyGFnbo9oo3mnEj4sXr7')">
+Ver Guía del Comprador
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
 function openPDF(file){
-  const viewer = document.getElementById('pdfViewer');
-  const frame = document.getElementById('pdfFrame');
-  const loader = document.getElementById('loader');
-  const openOutside = document.getElementById('openOutside');
-  const openLink = document.getElementById('openLink');
 
-  viewer.style.display = 'block';
-  loader.style.display = 'flex';
-  openOutside.style.display = 'none';
+const viewer=document.getElementById('pdfViewer');
+const frame=document.getElementById('pdfFrame');
+const loader=document.getElementById('loader');
+const openOutside=document.getElementById('openOutside');
+const openLink=document.getElementById('openLink');
 
-  const encoded = encodeURIComponent(file);
-  const url = location.origin + '/' + encoded;
+viewer.style.display='block';
+loader.style.display='flex';
+openOutside.style.display='none';
 
-  // visor principal
-  frame.src = `https://docs.google.com/gview?embedded=true&url=${url}`;
+let url=file;
 
-  frame.onload = () => {
-    loader.style.display = 'none';
-    openOutside.style.display = 'block';
-  };
+if(!file.startsWith("http")){
+url=location.origin+"/"+encodeURIComponent(file);
+}
 
-  // fallback si google viewer falla
-  setTimeout(()=>{
-    if(loader.style.display !== "none"){
-      frame.src = url;
-    }
-  },3000);
+/* visor PDF.js */
+frame.src="https://mozilla.github.io/pdf.js/web/viewer.html?file="+encodeURIComponent(url);
 
-  openLink.href = url;
-  viewer.scrollIntoView({behavior:'smooth'});
+frame.onload=function(){
+loader.style.display='none';
+openOutside.style.display='block';
+}
+
+openLink.href=url;
+
+viewer.scrollIntoView({behavior:'smooth'});
 }
 </script>
 
+</body>
+</html>
 </body>
 </html>
 
