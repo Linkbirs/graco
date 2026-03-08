@@ -186,6 +186,17 @@ h2{
     </div>
   </div>
 
+  <!-- ===== NUEVA SECCIÓN ===== -->
+  <div class="section">
+    <h2>EQUIPO DE SERVICIO PARA VEHÍCULOS<br>GUÍA DEL COMPRADOR</h2>
+
+    <div class="buttons">
+      <a class="btn" href="https://drive.google.com/file/d/1IcY2Xt5dMFxavyGFnbo9oo3mnEj4sXr7/view?usp=sharing"></a>
+        Ver Guía del Comprador
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -203,13 +214,20 @@ function openPDF(file){
   const encoded = encodeURIComponent(file);
   const url = location.origin + '/' + encoded;
 
-  // visor estable para móvil y PC
+  // visor principal
   frame.src = `https://docs.google.com/gview?embedded=true&url=${url}`;
 
   frame.onload = () => {
     loader.style.display = 'none';
     openOutside.style.display = 'block';
   };
+
+  // fallback si google viewer falla
+  setTimeout(()=>{
+    if(loader.style.display !== "none"){
+      frame.src = url;
+    }
+  },3000);
 
   openLink.href = url;
   viewer.scrollIntoView({behavior:'smooth'});
@@ -218,6 +236,5 @@ function openPDF(file){
 
 </body>
 </html>
-
 
 
