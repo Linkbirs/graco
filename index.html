@@ -135,12 +135,9 @@ h2{
 <div class="buttons">
 <div class="btn" onclick="openPDF('catalogo general.pdf')">Catálogo General</div>
 <div class="btn" onclick="openPDF('BOMBAS-G3.pdf')">G3 Bomba eléctrica para grasa o aceite</div>
-<div class="btn" onclick="openPDF('G3Bomba de lubricación eléctrica.pdf')">G3 Bomba de lubricación eléctrica</div>
-<div class="btn" onclick="openPDF('Bombas Modu-Flo.pdf')">Bombas Modu-Flo</div>
 <div class="btn" onclick="openPDF('Equipos de proceso catalogos.pdf')">Equipos de proceso</div>
 <div class="btn" onclick="openPDF('Bombas automáticas de lubricación.pdf')">Bombas automáticas de lubricación</div>
 <div class="btn" onclick="openPDF('Graco manual bombas electricas de diafragma.pdf')">Bombas electricas de diafragma</div>
-<div class="btn" onclick="openPDF('Bombas Meter-Flo.pdf')">Bombas Meter-Flo</div>
 </div>
 
 <div id="pdfViewer">
@@ -191,6 +188,14 @@ Ver Guía del Comprador
 
 </div>
 
+<!-- BOTÓN AGREGADO -->
+<div class="section">
+<h2>Página Oficial</h2>
+<div class="buttons">
+<a class="btn" href="https://www.graco.com/mx/es.html" target="_blank">GRACO</a>
+</div>
+</div>
+
 </div>
 
 <script>
@@ -226,7 +231,7 @@ frame.src=url;
 
 /* resto de pdfs */
 else{
-frame.src=`https://docs.google.com/gview?embedded=true&url=${url}`;
+frame.src=https://docs.google.com/gview?embedded=true&url=${url};
 }
 
 frame.onload=function(){
