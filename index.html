@@ -229,9 +229,9 @@ else if(file.includes("diafragma")){
 frame.src=url;
 }
 
-/* resto de pdfs */
+/* resto de pdfs (ARREGLADO) */
 else{
-frame.src=https://docs.google.com/gview?embedded=true&url=${url};
+frame.src = `https://docs.google.com/gview?embedded=true&url=${url}`;
 }
 
 frame.onload=function(){
